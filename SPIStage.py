@@ -34,7 +34,5 @@ class SPIStage:
         self.send('<03>\r')
 
     def move_to_target(self, target):
-        target = to_hex(target, 8)
-        print(target)
-        self.send('<08 ' + target + '>\r')
+        self.send('<08 ' + to_hex(target, 8) + '>\r')
 
