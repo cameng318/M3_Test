@@ -39,4 +39,3 @@ class SPIStage:
         elif target < -6000:
             target = -6000
         self.send('<08 ' + to_hex(target, 8) + '>\r')
-
