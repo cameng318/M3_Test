@@ -19,3 +19,14 @@ class SPIStage:
         reply = ''.join([chr(x) for x in reply]).strip('\x01')
         time.sleep(.00006)
         return reply
+
+    def read_the_firmware_version(self):
+        self.send('<01>\r')
+        return self.get()
+
+    def halt_the_motor(self):
+        self.send('<03>\r')
+        if self.get() == '<03>\r':
+            return 0
+        else:
+            return -1
