@@ -5,7 +5,7 @@ import spidev
 class SPIStage:
     def __init__(self, bus, device):
         self.axis = spidev.SpiDev()
-        self.axis.open(self.bus, self.device)
+        self.axis.open(bus, device)
         self.axis.max_speed_hz = 1000000
         self.axis.mode = 1
 
