@@ -1,28 +1,14 @@
-import time
-import spidev
+from SPIStage import *
 
-bus = 0
-device = 0
-spi = spidev.SpiDev()
-spi.open(bus, device)
-spi.max_speed_hz = 1000000
-spi.mode = 1
 
-def send(msg):
-    msg = [ord(x) for x in msg]
-    spi.writebytes(msg)
-    time.sleep(.00006)
+x = SPIStage(0,0)
+y = SPIStage(0,1)
 
-def get():
-    reply = spi.readbytes(31)
-    reply = ''.join([chr(x) for x in reply]).strip('\x01')
-    time.sleep(.00006)
-    return reply
-
-send('<08 00001770>\r')
-print(get())
-
-time.sleep(2)
-
-send('<08 fffff890>\r')
-print(get())
+x.send('<06 1 00001770>\r')
+print(x.get())
+y.send('<06 1 00001770>\r')
+print(y.get())
+x.send('<06 1 fffff890>\r')
+print(x.get())
+y.send('<06 1 fffff890>\r')
+print(y.get())
