@@ -2,6 +2,12 @@ import time
 import spidev
 
 
+def to_hex(val, byte):
+    bit = 4 * byte
+    val = ((val + (1 << bit)) % (1 << bit))
+    return ('{:0'+str(byte)+'x}').format(val)
+
+
 class SPIStage:
     def __init__(self, bus, device):
         self.axis = spidev.SpiDev()
@@ -26,7 +32,7 @@ class SPIStage:
 
     def halt_the_motor(self):
         self.send('<03>\r')
-        if self.get() == '<03>\r':
-            return 0
-        else:
-            return -1
+
+    def move_to_target(self, target):
+        self.send('<08 ' + to_hex(target, 8) + '>\r')
+
