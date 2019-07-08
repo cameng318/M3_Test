@@ -3,9 +3,7 @@ import spidev
 
 
 def to_hex(val, byte):
-    bit = 4 * byte
-    val = ((val + (1 << bit)) % (1 << bit))
-    return ('{:0'+str(byte)+'x}').format(val)
+    return ('{:0'+str(byte)+'X}').format(val)
 
 
 class SPIStage:
@@ -16,8 +14,8 @@ class SPIStage:
         self.axis.mode = 1
 
     def send(self, msg):
-        msg = [ord(x) for x in msg]
-        self.axis.writebytes(msg)
+        message = [ord(x) for x in msg]
+        self.axis.writebytes(message)
         time.sleep(.00006)
 
     def get(self):
@@ -33,9 +31,10 @@ class SPIStage:
     def halt_the_motor(self):
         self.send('<03>\r')
 
-    def move_to_target(self, target):
-        if target > 600000:
-            target = 600000
-        elif target < -600000:
-            target = -600000
+    def move_to_target(self, tgt):
+        target = tgt
+        if target > 12000:
+            target = 12000
+        elif target < 0:
+            target = 0
         self.send('<08 ' + to_hex(target, 8) + '>\r')
