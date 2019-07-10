@@ -2,7 +2,7 @@ from SPIStage import *
 
 x = SPIStage(0, 0)
 y = SPIStage(0, 1)
-string = ''
+string = []
 
 home = [3000, 3000]
 target = [3360, 3360]
@@ -22,5 +22,8 @@ for i in range(100):
     string.append(y.view_closed_loop_status_and_position())
 
 end_time = time.time()
-print(string)
+
+for j in string:
+    print(j)
+
 print(end_time - start_time)
