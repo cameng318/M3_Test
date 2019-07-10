@@ -19,7 +19,7 @@ class SPIStage:
         time.sleep(.00006)
 
     def get(self):
-        reply = self.axis.readbytes(32)
+        reply = self.axis.readbytes(35)
         message = ''.join([chr(x) for x in reply]).strip('\x01')
         time.sleep(.00006)
         return message
