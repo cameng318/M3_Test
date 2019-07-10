@@ -1,11 +1,10 @@
 from SPIStage import *
-from datetime import datetime, date
 
 x = SPIStage(0, 0)
 y = SPIStage(0, 1)
 
 home = [3000, 3000]
-target = [3360, 3000]
+target = [3360, 3360]
 
 x.move_to_target(home[0])
 y.move_to_target(home[1])
@@ -22,5 +21,4 @@ for i in range(100):
     print(y.view_closed_loop_status_and_position())
 
 end_time = time.time()
-duration = datetime.combine(date.today(), start_time) - datetime.combine(date.today(), end_time)
-print(duration)
+print(end_time - start_time)
