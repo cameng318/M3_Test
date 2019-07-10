@@ -1,4 +1,5 @@
 from SPIStage import *
+import time
 
 x = SPIStage(0, 0)
 y = SPIStage(0, 1)
@@ -16,19 +17,15 @@ y.move_to_target(target[1])
 start_time = time.time()
 
 for i in range(100):
-    #time.sleep(.001)
-    string.append(i)
-    string.append(x.view_closed_loop_status_and_position())
-    string.append(y.view_closed_loop_status_and_position())
+    # time.sleep(.001)
+    string.append([i, x.view_closed_loop_status_and_position(), y.view_closed_loop_status_and_position()])
 
 end_time = time.time()
 
 for j in string:
-    if isinstance(j, int):
-        print(j)
-    else:
-        message = ''.join([chr(x) for x in j]).strip('\x01')
-        print(message)
+    print(j[0])
+    print(''.join([chr(x) for x in j[1]]).strip('\x01'))
+    print(''.join([chr(x) for x in j[2]]).strip('\x01'))
 
 print('total time:')
 print(end_time - start_time)
