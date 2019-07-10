@@ -3,8 +3,8 @@ from SPIStage import *
 x = SPIStage(0, 0)
 y = SPIStage(0, 1)
 
-home = [4614, 1457]
-target = [4714, 1457]
+home = [3000, 3000]
+target = [3360, 3000]
 
 x.move_to_target(home[0])
 y.move_to_target(home[1])
