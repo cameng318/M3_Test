@@ -17,7 +17,7 @@ start_time = time.time()
 
 for i in range(100):
     #time.sleep(.001)
-    string.append(str(i) + ':')
+    string.append(i)
     string.append(x.view_closed_loop_status_and_position())
     string.append(y.view_closed_loop_status_and_position())
 
