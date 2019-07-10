@@ -30,4 +30,5 @@ for j in string:
         message = ''.join([chr(x) for x in j]).strip('\x01')
         print(message)
 
+print('total time:')
 print(end_time - start_time)
