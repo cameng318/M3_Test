@@ -5,8 +5,8 @@ x = SPIStage(0, 0)
 y = SPIStage(0, 1)
 
 home = [4614, 1457]
-target = [6000,6000]
-delay = 0.5
+target = [6000, 6000]
+delay = 1
 
 x.move_to_target(home[0])
 y.move_to_target(home[1])

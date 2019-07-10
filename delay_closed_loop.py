@@ -14,7 +14,7 @@ time.sleep(1)
 for i in range(100):
     x.move_to_target(target[0])
     y.move_to_target(target[1])
-    time.sleep(i/100)
+    time.sleep(.001)
     print(str(i) + ':')
     print(x.view_closed_loop_status_and_position())
     print(y.view_closed_loop_status_and_position())
