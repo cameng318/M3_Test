@@ -38,3 +38,7 @@ class SPIStage:
         elif target < 0:
             target = 0
         self.send('<08 ' + to_hex(target, 8) + '>\r')
+
+    def view_closed_loop_status_and_position(self):
+        self.send('<10>\r')
+        return self.get()
