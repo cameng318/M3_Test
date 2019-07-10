@@ -15,7 +15,7 @@ y.move_to_target(target[1])
 start_time = time.time()
 
 for i in range(100):
-    time.sleep(.001)
+    #time.sleep(.001)
     print(str(i) + ':')
     print(x.view_closed_loop_status_and_position())
     print(y.view_closed_loop_status_and_position())
