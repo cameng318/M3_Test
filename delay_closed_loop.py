@@ -24,8 +24,10 @@ for i in range(100):
 end_time = time.time()
 
 for j in string:
-    message = str(j)
-    message = ''.join([chr(x) for x in message]).strip('\x01')
+    if len(j) == 1:
+        message = j
+    else:
+        message = ''.join([chr(x) for x in j]).strip('\x01')
     print(message)
 
 print(end_time - start_time)
