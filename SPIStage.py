@@ -46,4 +46,4 @@ class SPIStage:
 
     def view_closed_loop_status_and_position(self):
         self.send('<10>\r')
-        return self.get()
+        return self.get_raw()
