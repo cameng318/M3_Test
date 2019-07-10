@@ -20,9 +20,14 @@ class SPIStage:
 
     def get(self):
         reply = self.axis.readbytes(35)
-        reply = ''.join([chr(x) for x in reply]).strip('\x01')
+        message = ''.join([chr(x) for x in reply]).strip('\x01')
         time.sleep(.00006)
-        return reply
+        return message
+
+    def get_raw(self):
+        message = self.axis.readbytes(35)
+        time.sleep(.00006)
+        return message
 
     def read_the_firmware_version(self):
         self.send('<01>\r')
