@@ -38,6 +38,6 @@ class StageI2C(Stage):
             pass
 
         # Join the bytes together and strip off the empty signs
-        message = ''.join([chr(x) for x in reply]).strip('\x01')
+        message = ''.join([chr(x) for x in reply]).strip('\x01\r')
 
         return message
