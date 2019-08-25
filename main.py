@@ -68,4 +68,4 @@ while True:
     x.move_to_target(position[0])
     y.move_to_target(position[1])
 
-    time.sleep(.001)
+    time.sleep(.01)
