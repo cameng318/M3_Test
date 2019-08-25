@@ -27,10 +27,6 @@ class Stage:
         self.send('<08 ' + to_hex(target, 8) + '>\r')
         return self.get()
 
-    def view_closed_loop_status_and_position(self):
-        self.send('<10>\r')
-        return self.get().rstrip('\x01\r')
-
     def frequency_calibration(self):
         """ Run the automatic frequency calibration. """
         self.send('<87 5>\r')
@@ -47,6 +43,10 @@ class Stage:
         self.send('<03>\r')
         return self.get()
 
+    def view_closed_loop_status_and_position(self):
+        self.send('<10>\r')
+        return self.get().rstrip('\x01\r')
+        
     def select_open_loop_drive_mode(self):
         self.send('<20 0>\r')
         return self.get()
