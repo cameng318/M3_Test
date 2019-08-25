@@ -45,6 +45,10 @@ class SPIStage:
         self.send('<08 ' + to_hex(target, 8) + '>\r')
         return self.get()
 
+    def set_the_open_loop_mode_speed(self, speed):
+        self.send('<09 80>\r')
+        return self.get()
+
     def view_closed_loop_status_and_position(self):
         self.send('<10>\r')
         return self.get()
