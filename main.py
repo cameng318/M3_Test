@@ -64,8 +64,8 @@ while True:
         if (abs(axes[0]) < 0.05) and (abs(axes[1]) < 0.05):
             Homed = True
 
-    print(position, sensitivity_level)
+    print(position, sensitivity_level, x.get(), y.get())
     x.move_to_target(position[0])
     y.move_to_target(position[1])
 
-    time.sleep(.01)
+    #time.sleep(.01)
