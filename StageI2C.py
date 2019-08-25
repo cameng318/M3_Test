@@ -27,10 +27,9 @@ class StageI2C(Stage):
         # The communication may fail at times due to latency. Thus use try and except.
         try:
             self.bus.write_i2c_block_data(self.address, 0, message)
+            time.sleep(.00006)
         except I2CError:
             pass
-
-        time.sleep(.00006)
 
     def get(self):
         """ Receive message from the I2C device. """
@@ -38,11 +37,11 @@ class StageI2C(Stage):
         # The communication may fail at times due to latency. Thus use try and except.
         try:
             reply = self.bus.read_i2c_block_data(self.address, 0)
+            time.sleep(.00006)
         except I2CError:
             reply = ''
 
         # Join the bytes together and strip off the empty signs
         message = ''.join([chr(x) for x in reply]).strip('\x01')
 
-        time.sleep(.00006)
         return message
