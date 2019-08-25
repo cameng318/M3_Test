@@ -1,11 +1,12 @@
 from Joystick import *
 from config import *
-from SPIStage import *
+from I2CStage import *
 import pygame
 import time
 
 x = SPIStage(0, 0)
 y = SPIStage(0, 1)
+z = I2CStage(1, 0x40)
 
 pygame.init()
 joystick = Joystick()
@@ -64,8 +65,7 @@ while True:
         if (abs(axes[0]) < 0.05) and (abs(axes[1]) < 0.05):
             Homed = True
 
-    print(position, sensitivity_level, x.get(), y.get())
+    print(position, sensitivity_level, x.get(), y.get(), z.get())
     x.move_to_target(position[0])
     y.move_to_target(position[1])
-
-    #time.sleep(.01)
+    z.move_to_target(position[2])
