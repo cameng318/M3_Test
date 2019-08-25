@@ -3,11 +3,6 @@ import smbus
 import time
 
 
-class I2CError(Exception):
-    """ I2C Communication Error. """
-    pass
-
-
 class StageI2C(Stage):
     def __init__(self, bus, address):
         """ Initialize I2C communication. """
@@ -39,7 +34,7 @@ class StageI2C(Stage):
         try:
             reply = self.bus.read_i2c_block_data(self.address, 0)
             time.sleep(.00006)
-        except I2CError:
+        except OSError:
             pass
 
         # Join the bytes together and strip off the empty signs
