@@ -33,7 +33,7 @@ class SPIStage:
         return self.get()
 
     def move_the_motor_in_timed_open_loop_steps(self, direction, steps, interval, duration):
-        self.send('<04 1 0010>\r')
+        self.send('<04 0 0014>\r')
         return self.get()
 
     def move_to_target(self, tgt):
