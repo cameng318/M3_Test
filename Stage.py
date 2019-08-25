@@ -1,28 +1,19 @@
-import time
-import spidev
-
-
 def to_hex(val, byte):
+    """ Convert a value to hex format in a given number of bytes.
+
+        """
     return ('{:0'+str(byte)+'X}').format(val)
 
 
-class SPIStage:
-    def __init__(self, bus, device):
-        self.axis = spidev.SpiDev()
-        self.axis.open(bus, device)
-        self.axis.max_speed_hz = 400000
-        self.axis.mode = 1
+class Stage:
+    def __init__(self):
+        pass
 
     def send(self, msg):
-        message = [ord(x) for x in msg]
-        self.axis.writebytes(message)
-        time.sleep(.00006)
+        pass
 
     def get(self):
-        reply = self.axis.readbytes(35)
-        message = ''.join([chr(x) for x in reply]).strip('\x01')
-        time.sleep(.00006)
-        return message
+        pass
 
     def read_the_firmware_version(self):
         self.send('<01>\r')
@@ -32,10 +23,6 @@ class SPIStage:
         self.send('<03>\r')
         return self.get()
 
-    def move_the_motor_in_timed_open_loop_steps(self, direction, steps, interval, duration):
-        self.send('<04 1 0014>\r')
-        return self.get()
-
     def move_to_target(self, tgt):
         target = tgt
         if target > 12000:
@@ -43,10 +30,6 @@ class SPIStage:
         elif target < 0:
             target = 0
         self.send('<08 ' + to_hex(target, 8) + '>\r')
-        return self.get()
-
-    def set_the_open_loop_mode_speed(self, speed):
-        self.send('<09 80>\r')
         return self.get()
 
     def view_closed_loop_status_and_position(self):

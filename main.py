@@ -1,20 +1,31 @@
 from Joystick import *
 from config import *
-from I2CStage import *
+from StageSPI import *
+from StageI2C import *
 import pygame
-import time
 
-x = SPIStage(0, 0)
-y = SPIStage(0, 1)
-z = I2CStage(1, 0x40)
+# Clear the Linux built-in deadzone
+exec(open("Deadzone.py").read())
 
+# Initialize all 3 stages
+x = StageSPI(0, 0)
+y = StageSPI(0, 1)
+z = StageI2C(1, 0x40)
+
+# Initialize pygame and joystick functions
 pygame.init()
 joystick = Joystick()
 buttons, axes = joystick.get_all()
 
+# Declare default home position and current position
 home = [6000, 6000, 6000]
 position = [6000, 6000, 6000]
+
+# Declare default sensitivity level for x and y axes
 sensitivity_level = 0
+
+# Declare if both x and y axes has been homed
+# Threshold for homing declared in config.py
 Homed = True
 
 
@@ -62,7 +73,7 @@ while True:
                     clamp(home[1] - axes[1] * Sensitivity[sensitivity_level]),
                     position[2]]
     else:
-        if (abs(axes[0]) < 0.05) and (abs(axes[1]) < 0.05):
+        if (abs(axes[0]) < Home_threshold) and (abs(axes[1]) < Home_threshold):
             Homed = True
 
     print(position, sensitivity_level,
