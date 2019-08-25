@@ -42,3 +42,11 @@ class SPIStage:
     def view_closed_loop_status_and_position(self):
         self.send('<10>\r')
         return self.get()
+
+    def select_open_loop_drive_mode(self):
+        self.send('<20 0>\r')
+        return self.get()
+
+    def select_closed_loop_drive_mode(self):
+        self.send('<20 1>\r')
+        return self.get()
