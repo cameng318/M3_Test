@@ -64,6 +64,7 @@ while True:
         if (abs(axes[0]) < 0.05) and (abs(axes[1]) < 0.05):
             Homed = True
 
+    print(position)
     x.move_to_target(position[0])
     y.move_to_target(position[1])
 
