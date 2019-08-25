@@ -101,6 +101,6 @@ while True:
     print('Current Position: ', position,
           'Sensitivity: ', sensitivity_level,
           'Messages: ',
-          x.move_to_target(position[0]),
+          [x.move_to_target(position[0]),
           y.move_to_target(position[1]),
-          z.move_to_target(position[2]))
+          z.move_to_target(position[2])])
