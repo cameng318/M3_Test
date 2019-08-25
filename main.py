@@ -64,7 +64,7 @@ while True:
         if (abs(axes[0]) < 0.05) and (abs(axes[1]) < 0.05):
             Homed = True
 
-    x.move_to_target(home[0])
-    y.move_to_target(home[1])
+    x.move_to_target(position[0])
+    y.move_to_target(position[1])
 
     # time.sleep(1)
