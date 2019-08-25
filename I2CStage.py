@@ -16,10 +16,10 @@ class I2CStage(SPIStage):
         time.sleep(.00006)
 
     def get(self):
-        reply = self.bus.read_i2c_block_data(self.address, 0)
         try:
-            message = ''.join([chr(x) for x in reply]).strip('\x01')
+            reply = self.bus.read_i2c_block_data(self.address, 0)
         except:
             pass
+        message = ''.join([chr(x) for x in reply]).strip('\x01')
         time.sleep(.00006)
         return message
