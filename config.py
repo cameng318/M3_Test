@@ -12,7 +12,7 @@ Sensitivity = [6000, 3000, 1500, 750, 375, 188, 94, 47, 23, 12]
 Z_Sensitivity = 20
 
 # Threshold level for homing an axis
-Home_threshold = 0.05
+Home_threshold = 0.01
 
 # Button mapping for Thrustmaster T.16000M
 HAT_UP = 16
