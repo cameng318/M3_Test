@@ -18,4 +18,4 @@ T_16000_buttons = [
 ]
 
 Sensitivity = [6000, 3000, 1500, 750, 375, 188, 94, 47, 23, 12]
-Z_Sensitivity = 100
+Z_Sensitivity = 20
