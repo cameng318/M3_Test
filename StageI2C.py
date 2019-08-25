@@ -1,6 +1,5 @@
 from Stage import *
 import smbus
-import time
 
 
 class StageI2C(Stage):
@@ -22,7 +21,6 @@ class StageI2C(Stage):
         # The communication may fail at times due to latency. Thus use try and except.
         try:
             self.bus.write_i2c_block_data(self.address, 0, message)
-            time.sleep(.00006)
         except OSError:
             pass
 
@@ -33,7 +31,6 @@ class StageI2C(Stage):
         reply = ''
         try:
             reply = self.bus.read_i2c_block_data(self.address, 0)
-            time.sleep(.00006)
         except OSError:
             pass
 
