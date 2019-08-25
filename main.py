@@ -98,9 +98,9 @@ while True:
             Homed = True
 
     # Send current position to the linear stages
-    print('Current Position: ', '{:0>5d},{:0>5d},{:0>5d}'.format(*position),
-          'Sensitivity: ', sensitivity_level,
-          'Messages: ',
+    print('Current Position: ', '{:0>5d}, {:0>5d}, {:0>5d}'.format(*position),
+          ' Sensitivity: ', sensitivity_level,
+          ' Messages: ',
           x.move_to_target(position[0]),
           y.move_to_target(position[1]),
           z.move_to_target(position[2]))
