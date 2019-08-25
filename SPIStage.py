@@ -30,6 +30,11 @@ class SPIStage:
 
     def halt_the_motor(self):
         self.send('<03>\r')
+        return self.get()
+
+    def move_the_motor_in_timed_open_loop_steps(self, direction, steps, interval, duration):
+        self.send('<05>')
+        return self.get()
 
     def move_to_target(self, tgt):
         target = tgt
@@ -38,6 +43,7 @@ class SPIStage:
         elif target < 0:
             target = 0
         self.send('<08 ' + to_hex(target, 8) + '>\r')
+        return self.get()
 
     def view_closed_loop_status_and_position(self):
         self.send('<10>\r')
