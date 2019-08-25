@@ -103,4 +103,5 @@ while True:
           'Messages: ',
           x.move_to_target(position[0]),
           y.move_to_target(position[1]),
-          z.move_to_target(position[2]))
+          z.move_to_target(position[2]),
+          x.view_closed_loop_status_and_position())
