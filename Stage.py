@@ -29,7 +29,7 @@ class Stage:
 
     def view_closed_loop_status_and_position(self):
         self.send('<10>\r')
-        return self.get().rstrip('\x01', '\r', '<', '>')
+        return self.get().rstrip('\x01', '\r', '<', '>', ' ')
 
     def frequency_calibration(self):
         """ Run the automatic frequency calibration. """
