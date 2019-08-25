@@ -11,6 +11,8 @@ class I2CStage(SPIStage):
         message = [ord(x) for x in msg]
         try:
             self.bus.write_i2c_block_data(self.address, 0, message)
+        except:
+            pass
         time.sleep(.00006)
 
     def get(self):
