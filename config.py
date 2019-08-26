@@ -9,7 +9,7 @@ AbsMin = 0
 Sensitivity = [6000, 3000, 1500, 750, 375, 188, 94, 47, 23, 12]
 
 # Sensitivity for z axis
-Z_Sensitivity = 20
+Z_Sensitivity = 100
 
 # Threshold level for homing an axis
 Home_threshold = 0.01
