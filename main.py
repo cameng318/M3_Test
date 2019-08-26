@@ -24,6 +24,10 @@ position = [DefaultHome, DefaultHome, DefaultHome]
 # Declare default sensitivity level for x and y axes
 sensitivity_level = 0
 
+# Declare sensitivity level for z axis
+sensitivity_Z_High = True
+Z_Sensitivity = Z_Sensitivity_High
+
 # Declare if both x and y axes has been homed
 # Threshold for homing declared in config.py
 Homed = True
@@ -88,6 +92,15 @@ while True:
         home[0] = DefaultHome
         home[1] = DefaultHome
 
+    # Toggle sensitivity for z axis
+    if buttons_change[RIGHT_BUTTON] == 1:
+        if sensitivity_Z_High:
+            sensitivity_Z_High = False
+            Z_Sensitivity = Z_Sensitivity_Low
+        else:
+            sensitivity_Z_High = True
+            Z_Sensitivity = Z_Sensitivity_High
+
     # Update current position
     if Homed:
         position = [clamp(home[0] + axes[0] * Sensitivity[sensitivity_level]),
@@ -99,7 +112,8 @@ while True:
 
     # Send current position to the linear stages
     print('Current Position: ', '{:0>5d}, {:0>5d}, {:0>5d}'.format(*position),
-          ' Sensitivity: ', sensitivity_level,
+          ' XY Sensitivity: ', sensitivity_level,
+          ' Z Sensitivity High: ', sensitivity_Z_High,
           ' Messages: ',
           x.move_to_target(position[0]),
           y.move_to_target(position[1]),
