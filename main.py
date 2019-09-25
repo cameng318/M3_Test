@@ -79,7 +79,7 @@ while True:
         z_start_position = position[2]
         z_start_time = time()
     if buttons[HAT_UP]:
-        position[2] = clamp(z_start_time + Z_Sensitivity * (time() - z_start_time))
+        position[2] = clamp(z_start_position + Z_Sensitivity * (time() - z_start_time))
         # position[2] = clamp(position[2] + Z_Sensitivity)
 
     # Z axis down
@@ -87,7 +87,7 @@ while True:
         z_start_position = position[2]
         z_start_time = time()
     if buttons[HAT_DOWN]:
-        position[2] = clamp(z_start_time - Z_Sensitivity * (time() - z_start_time))
+        position[2] = clamp(z_start_position - Z_Sensitivity * (time() - z_start_time))
         # position[2] = clamp(position[2] - Z_Sensitivity)
 
     # Set home for x and y axes
