@@ -2,6 +2,7 @@ from Joystick import *
 from config import *
 from StageSPI import *
 from StageI2C import *
+from time import *
 import pygame
 
 # Clear the Linux built-in joystick deadzone
@@ -75,11 +76,19 @@ while True:
 
     # Z axis up
     if buttons_change[HAT_UP] == 1:
-        position[2] = clamp(position[2] + Z_Sensitivity)
+        z_start_position = position[2]
+        z_start_time = time.time()
+    if HAT_UP:
+        position[2] = clamp(z_start_time + Z_Sensitivity * (time.time() - z_start_time))
+        # position[2] = clamp(position[2] + Z_Sensitivity)
 
     # Z axis down
     if buttons_change[HAT_DOWN] == 1:
-        position[2] = clamp(position[2] - Z_Sensitivity)
+        z_start_position = position[2]
+        z_start_time = time.time()
+    if HAT_UP:
+        position[2] = clamp(z_start_time - Z_Sensitivity * (time.time() - z_start_time))
+        # position[2] = clamp(position[2] - Z_Sensitivity)
 
     # Set home for x and y axes
     if buttons_change[LEFT_BUTTON] == 1:
